@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Курсы валют ЦБ РФ</string>
+    <string name="rates_fragment">Официальные курсы иностранных валют по отношению к рублю, устанавливленные Центральным Банком Российской Федерации</string>
+</resources>

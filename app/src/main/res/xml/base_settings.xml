@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference
+        android:key="baseURL"
+        android:summary="Введите начальный адрес URL для загрузки курсов"
+        android:title="Адрес URL"
+        android:inputType="textUri"
+        android:icon="@drawable/icon"/>
+
+    <CheckBoxPreference
+        android:key="usd"
+        android:summary="Отображать курс валюты Доллар США"
+        android:title="Отображать USD"
+        android:icon="@drawable/usd"/>
+    <CheckBoxPreference
+        android:key="eur"
+        android:summary="Отображать курс валюты ЕВРО"
+        android:title="Отображать EUR"
+        android:icon="@drawable/eur"/>
+    <CheckBoxPreference
+        android:key="aud"
+        android:summary="Отображать курс валюты Австралийский доллар"
+        android:title="Отображать AUD"
+        android:icon="@drawable/aud"/>
+    <CheckBoxPreference
+        android:key="azn"
+        android:summary="Отображать курс валюты Азербайджанский манат"
+        android:title="Отображать AZN"
+        android:icon="@drawable/azn"/>
+    <CheckBoxPreference
+        android:key="gbp"
+        android:summary="Отображать курс валюты Фунт стерлингов Соединенного королевства"
+        android:title="Отображать GBP"
+        android:icon="@drawable/gbp"/>
+    <CheckBoxPreference
+        android:key="amd"
+        android:summary="Отображать курс валюты Армянский драм"
+        android:title="Отображать AMD"
+        android:icon="@drawable/amd"/>
+    <CheckBoxPreference
+        android:key="byn"
+        android:summary="Отображать курс валюты Белорусский рубль"
+        android:title="Отображать BYN"
+        android:icon="@drawable/byn"/>
+    <CheckBoxPreference
+        android:key="bgn"
+        android:summary="Отображать курс валюты Болгарский лев"
+        android:title="Отображать BGN"
+        android:icon="@drawable/bgn"/>
+    <CheckBoxPreference
+        android:key="brl"
+        android:summary="Отображать курс валюты Бразильский реал"
+        android:title="Отображать BRL"
+        android:icon="@drawable/brl"/>
+    <CheckBoxPreference
+        android:key="huf"
+        android:summary="Отображать курс валюты Венгерский форинт"
+        android:title="Отображать HUF"
+        android:icon="@drawable/huf"/>
+    <CheckBoxPreference
+        android:key="hkd"
+        android:summary="Отображать курс валюты Гонконгский доллар"
+        android:title="Отображать HKD"
+        android:icon="@drawable/hkd"/>
+    <CheckBoxPreference
+        android:key="dkk"
+        android:summary="Отображать курс валюты Датская крона"
+        android:title="Отображать DKK"
+        android:icon="@drawable/dkk"/>
+    <CheckBoxPreference
+        android:key="inr"
+        android:summary="Отображать курс валюты Индийский рупий"
+        android:title="Отображать INR"
+        android:icon="@drawable/inr"/>
+    <CheckBoxPreference
+        android:key="kzt"
+        android:summary="Отображать курс валюты Казахстанский тенге"
+        android:title="Отображать KZT"
+        android:icon="@drawable/kzt"/>
+    <CheckBoxPreference
+        android:key="cad"
+        android:summary="Отображать курс валюты Канадский доллар"
+        android:title="Отображать CAD"
+        android:icon="@drawable/cad"/>
+    <CheckBoxPreference
+        android:key="kgs"
+        android:summary="Отображать курс валюты Киргизский сом"
+        android:title="Отображать KGS"
+        android:icon="@drawable/kgs"/>
+    <CheckBoxPreference
+        android:key="cny"
+        android:summary="Отображать курс валюты Китайский юань"
+        android:title="Отображать CNY"
+        android:icon="@drawable/cny"/>
+    <CheckBoxPreference
+        android:key="mdl"
+        android:summary="Отображать курс валюты Молдавский лей"
+        android:title="Отображать MDL"
+        android:icon="@drawable/mdl"/>
+    <CheckBoxPreference
+        android:key="nok"
+        android:summary="Отображать курс валюты Норвежская крона"
+        android:title="Отображать NOK"
+        android:icon="@drawable/nok"/>
+    <CheckBoxPreference
+        android:key="pln"
+        android:summary="Отображать курс валюты Польский злотый"
+        android:title="Отображать PLN"
+        android:icon="@drawable/pln"/>
+    <CheckBoxPreference
+        android:key="ron"
+        android:summary="Отображать курс валюты Румынский лей"
+        android:title="Отображать RON"
+        android:icon="@drawable/ron"/>
+    <CheckBoxPreference
+        android:key="xdr"
+        android:summary="Отображать курс валюты СДР (специальные права заимствования)"
+        android:title="Отображать XDR"
+        android:icon="@drawable/xdr"/>
+    <CheckBoxPreference
+        android:key="sgd"
+        android:summary="Отображать курс валюты Сингапурский доллар"
+        android:title="Отображать SGD"
+        android:icon="@drawable/sgd"/>
+    <CheckBoxPreference
+        android:key="tjs"
+        android:summary="Отображать курс валюты Таджикский сомони"
+        android:title="Отображать TJS"
+        android:icon="@drawable/tjs"/>
+    <CheckBoxPreference
+        android:key="ktry"
+        android:summary="Отображать курс валюты Турецкая лира"
+        android:title="Отображать TRY"
+        android:icon="@drawable/ftry"/>
+    <CheckBoxPreference
+        android:key="tmt"
+        android:summary="Отображать курс валюты Новый туркменский манат"
+        android:title="Отображать TMT"
+        android:icon="@drawable/tmt"/>
+    <CheckBoxPreference
+        android:key="uzs"
+        android:summary="Отображать курс валюты Узбекский сум"
+        android:title="Отображать UZS"
+        android:icon="@drawable/uzs"/>
+    <CheckBoxPreference
+        android:key="uah"
+        android:summary="Отображать курс валюты Украинская гривна"
+        android:title="Отображать UAH"
+        android:icon="@drawable/uah"/>
+    <CheckBoxPreference
+        android:key="czk"
+        android:summary="Отображать курс валюты Чешская крона"
+        android:title="Отображать CZK"
+        android:icon="@drawable/czk"/>
+    <CheckBoxPreference
+        android:key="sek"
+        android:summary="Отображать курс валюты Шведская крона"
+        android:title="Отображать SEK"
+        android:icon="@drawable/sek"/>
+    <CheckBoxPreference
+        android:key="chf"
+        android:summary="Отображать курс валюты Швейцарский франк"
+        android:title="Отображать CHF"
+        android:icon="@drawable/chf"/>
+    <CheckBoxPreference
+        android:key="zar"
+        android:summary="Отображать курс валюты Южноафриканский рэнд"
+        android:title="Отображать ZAR"
+        android:icon="@drawable/zar"/>
+    <CheckBoxPreference
+        android:key="krw"
+        android:summary="Отображать курс валюты Вон Республики Корея"
+        android:title="Отображать KRW"
+        android:icon="@drawable/krw"/>
+    <CheckBoxPreference
+        android:key="jpy"
+        android:summary="Отображать курс валюты Японская иена"
+        android:title="Отображать JPY"
+        android:icon="@drawable/jpy"/>
+
+</PreferenceScreen>
