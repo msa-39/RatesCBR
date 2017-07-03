@@ -5,9 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <fragment android:id="@+id/ratesFragment"
+     <Button android:id="@+id/dateButton"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:text="Дата"
+         android:onClick="setDate"  />
+
+     <fragment android:id="@+id/ratesFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:name="xyz.msa_inet.ratescbr.RatesFragment"/>
+        android:layout_height="wrap_content"
+        android:name="xyz.msa_inet.ratescbr.RatesFragment"
+         android:layout_below="@+id/dateButton"
+         android:layout_centerHorizontal="true"
+         android:layout_marginTop="5dp" />
 
 </RelativeLayout>

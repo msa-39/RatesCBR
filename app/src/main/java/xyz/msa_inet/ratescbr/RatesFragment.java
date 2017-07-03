@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.AsyncTask;
+import android.widget.Button;
 import android.widget.Toast;
 import android.widget.TextView;
 import java.io.BufferedReader;
@@ -15,6 +16,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
 //import android.widget.DatePicker;
 //import java.util.Calendar;
 //import android.app.DatePickerDialog;
@@ -22,11 +24,14 @@ import java.net.URL;
 
 public class RatesFragment extends Fragment {
     TextView xmlRates;
-//    String ratesDate;
+    String ratesDate;
     String xmlcontentText = null;
     String baseURL;// = "http://www.cbr.ru/scripts/XML_daily.asp";
     String loadURL;// = baseURL;
 //    Calendar dateOnly=Calendar.getInstance();
+
+//    Calendar dateAndTime=Calendar.getInstance();
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
