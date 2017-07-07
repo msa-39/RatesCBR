@@ -24,7 +24,7 @@ import java.net.URL;
 
 public class RatesFragment extends Fragment {
     TextView xmlRates;
-    String ratesDate;
+    String ratesDateSTR;
     String xmlcontentText = null;
     String baseURL;// = "http://www.cbr.ru/scripts/XML_daily.asp";
     String loadURL;// = baseURL;
@@ -32,6 +32,7 @@ public class RatesFragment extends Fragment {
 
 //    Calendar dateAndTime=Calendar.getInstance();
 
+    TextView txtDate;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,9 +43,10 @@ public class RatesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_rates, container, false);
+        View view = inflater.inflate(R.layout.fragment_rates, null); //container, true);
 
         xmlRates = (TextView) view.findViewById(R.id.xmlRates);
+
 //        ratesDate = (DatePicker) view.findViewById(R.id.dateRates);
 //        TextView cLable = (TextView) view.findViewById(R.id.cLabel);
 
@@ -58,6 +60,7 @@ public class RatesFragment extends Fragment {
 
         return view;
     }
+
     private class LoadXMLTask extends AsyncTask <String, Void, String> {
         @Override
         protected String doInBackground(String... path) {

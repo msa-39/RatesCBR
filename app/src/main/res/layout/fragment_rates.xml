@@ -4,18 +4,18 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/cLabelDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Date will be here." />
+
+    <TextView
         android:id="@+id/cLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:text="@string/rates_fragment" />
-
-    <ListView
-        android:layout_weight="2"
-        android:layout_width="match_parent"
-        android:layout_height="0dp">
-    </ListView>
 
     <ScrollView
         android:layout_weight="1"

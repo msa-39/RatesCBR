@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/activity_main"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
      <Button android:id="@+id/dateButton"
          android:layout_width="match_parent"
@@ -11,12 +13,10 @@
          android:text="Дата"
          android:onClick="setDate"  />
 
-     <fragment android:id="@+id/ratesFragment"
+     <fragment android:id="@+id/rtFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:name="xyz.msa_inet.ratescbr.RatesFragment"
-         android:layout_below="@+id/dateButton"
-         android:layout_centerHorizontal="true"
-         android:layout_marginTop="5dp" />
+        tools:layout="@layout/fragment_rates"/>
 
-</RelativeLayout>
+</LinearLayout>

@@ -1,5 +1,6 @@
 package xyz.msa_inet.ratescbr;
 
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,12 +10,14 @@ import android.view.MenuItem;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.text.format.DateUtils;
 import android.widget.DatePicker;
 import java.util.Calendar;
 import android.app.DatePickerDialog;
-
+//import android.app.Fragment;
+import android.support.v4.app.Fragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,7 +28,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         ratesDate=(Button)findViewById(R.id.dateButton);
+
         setInitialDateTime();
 
         SharedPreferences prefs= PreferenceManager.getDefaultSharedPreferences(this);
@@ -40,9 +45,26 @@ public class MainActivity extends AppCompatActivity {
     // установка начальных даты и времени
     private void setInitialDateTime() {
 
-        ratesDate.setText(DateUtils.formatDateTime(this,
+        String strDate;
+        TextView txtDate;
+
+        strDate = DateUtils.formatDateTime(this,
                 dateOnly.getTimeInMillis(),
-                DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR));
+                DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR);
+        ratesDate.setText(strDate);
+
+        Fragment rfrag = getSupportFragmentManager().findFragmentById(R.id.rtFragment);
+
+//        ((TextView) rfrag.getView().findViewById(R.id.cLabelDate))
+//                .setText("Fragment is not NULL!");
+
+        if (rfrag != null && rfrag.isInLayout()) {
+            txtDate = (TextView) rfrag.getView().findViewById(R.id.cLabelDate);
+            txtDate.setText(strDate);
+        }
+        else {
+            Toast.makeText(this, "Rates Fragment is UNAVALIBLE!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     // отображаем диалоговое окно для выбора даты
