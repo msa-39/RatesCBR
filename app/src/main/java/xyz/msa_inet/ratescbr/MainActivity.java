@@ -1,6 +1,5 @@
 package xyz.msa_inet.ratescbr;
 
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -55,12 +54,11 @@ public class MainActivity extends AppCompatActivity {
 
         Fragment rfrag = getSupportFragmentManager().findFragmentById(R.id.rtFragment);
 
-//        ((TextView) rfrag.getView().findViewById(R.id.cLabelDate))
-//                .setText("Fragment is not NULL!");
-
         if (rfrag != null && rfrag.isInLayout()) {
-            txtDate = (TextView) rfrag.getView().findViewById(R.id.cLabelDate);
-            txtDate.setText(strDate);
+                    txtDate = (TextView) rfrag.getView().findViewById(R.id.cLabelDate);
+            txtDate.setText(DateUtils.formatDateTime(this,
+                    dateOnly.getTimeInMillis(),
+                    DateUtils.FORMAT_NUMERIC_DATE | DateUtils.FORMAT_SHOW_YEAR));
         }
         else {
             Toast.makeText(this, "Rates Fragment is UNAVALIBLE!", Toast.LENGTH_SHORT).show();

@@ -29,7 +29,6 @@ public class RatesFragment extends Fragment {
     String baseURL;// = "http://www.cbr.ru/scripts/XML_daily.asp";
     String loadURL;// = baseURL;
 //    Calendar dateOnly=Calendar.getInstance();
-
 //    Calendar dateAndTime=Calendar.getInstance();
 
     TextView txtDate;
@@ -49,7 +48,6 @@ public class RatesFragment extends Fragment {
 
 //        ratesDate = (DatePicker) view.findViewById(R.id.dateRates);
 //        TextView cLable = (TextView) view.findViewById(R.id.cLabel);
-
 //        cLable.setText(cLable.getText().toString()+" "+ dateOnly.getTime().toString());
 
         SharedPreferences prefs= PreferenceManager.getDefaultSharedPreferences(super.getContext());
