@@ -33,6 +33,11 @@ public class RatesFragment extends Fragment {
 
     TextView txtDate;
 
+    public void loadXML (String dSTR) {
+        loadURL = baseURL + "?date_req=" + dSTR;
+        new LoadXMLTask().execute(loadURL);
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

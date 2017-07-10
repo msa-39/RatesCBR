@@ -22,15 +22,12 @@ public class MainActivity extends AppCompatActivity {
 
     Calendar dateOnly=Calendar.getInstance();
     Button ratesDate;
+    public RatesFragment rfrag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        ratesDate=(Button)findViewById(R.id.dateButton);
-
-        setInitialDateTime();
 
         SharedPreferences prefs= PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = prefs.edit();
@@ -39,12 +36,17 @@ public class MainActivity extends AppCompatActivity {
             editor.putString("baseURL", "http://www.cbr.ru/scripts/XML_daily.asp");
             editor.apply();
         }
+        ratesDate=(Button)findViewById(R.id.dateButton);
+
+        setInitialDate();
+
     }
 
     // установка начальных даты и времени
-    private void setInitialDateTime() {
+    private void setInitialDate() {
 
         String strDate;
+        String strDateD;
         TextView txtDate;
 
         strDate = DateUtils.formatDateTime(this,
@@ -52,13 +54,16 @@ public class MainActivity extends AppCompatActivity {
                 DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR);
         ratesDate.setText(strDate);
 
-        Fragment rfrag = getSupportFragmentManager().findFragmentById(R.id.rtFragment);
+        strDateD = DateUtils.formatDateTime(this,
+                dateOnly.getTimeInMillis(),
+                DateUtils.FORMAT_NUMERIC_DATE | DateUtils.FORMAT_SHOW_YEAR);
+//        Fragment rfrag = getSupportFragmentManager().findFragmentById(R.id.rtFragment);
+        rfrag = (RatesFragment) getSupportFragmentManager().findFragmentById(R.id.rtFragment);
 
         if (rfrag != null && rfrag.isInLayout()) {
                     txtDate = (TextView) rfrag.getView().findViewById(R.id.cLabelDate);
-            txtDate.setText(DateUtils.formatDateTime(this,
-                    dateOnly.getTimeInMillis(),
-                    DateUtils.FORMAT_NUMERIC_DATE | DateUtils.FORMAT_SHOW_YEAR));
+            txtDate.setText(strDateD);
+            rfrag.loadXML(strDateD);
         }
         else {
             Toast.makeText(this, "Rates Fragment is UNAVALIBLE!", Toast.LENGTH_SHORT).show();
@@ -80,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
             dateOnly.set(Calendar.YEAR, year);
             dateOnly.set(Calendar.MONTH, monthOfYear);
             dateOnly.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            setInitialDateTime();
+            setInitialDate();
         }
     };
 
