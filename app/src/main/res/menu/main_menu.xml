@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
+    <!--item
         android:id="@+id/action_settings"
         android:title="Настройки">
-        <menu>
+        <menu-->
             <item android:id="@+id/base_settings"
                 android:title="Базовые настройки" />
-        </menu>
-    </item>
+        <!--/menu>
+    </item-->
 </menu>

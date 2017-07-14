@@ -3,11 +3,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <!--TextView
         android:id="@+id/cLabelDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Date will be here." />
+        android:text="Date will be here." /-->
 
     <TextView
         android:id="@+id/cLabel"

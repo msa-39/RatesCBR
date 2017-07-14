@@ -8,19 +8,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.AsyncTask;
-import android.widget.Button;
 import android.widget.Toast;
 import android.widget.TextView;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
-//import android.widget.DatePicker;
-//import java.util.Calendar;
-//import android.app.DatePickerDialog;
-//import android.text.format.DateUtils;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
+import android.text.TextUtils;
 
 public class RatesFragment extends Fragment {
     TextView xmlRates;
@@ -28,8 +27,6 @@ public class RatesFragment extends Fragment {
     String xmlcontentText = null;
     String baseURL;// = "http://www.cbr.ru/scripts/XML_daily.asp";
     String loadURL;// = baseURL;
-//    Calendar dateOnly=Calendar.getInstance();
-//    Calendar dateAndTime=Calendar.getInstance();
 
     TextView txtDate;
 
@@ -51,10 +48,6 @@ public class RatesFragment extends Fragment {
 
         xmlRates = (TextView) view.findViewById(R.id.xmlRates);
 
-//        ratesDate = (DatePicker) view.findViewById(R.id.dateRates);
-//        TextView cLable = (TextView) view.findViewById(R.id.cLabel);
-//        cLable.setText(cLable.getText().toString()+" "+ dateOnly.getTime().toString());
-
         SharedPreferences prefs= PreferenceManager.getDefaultSharedPreferences(super.getContext());
         baseURL = prefs.getString("baseURL", "http://www.cbr.ru/scripts/XML_daily.asp");
         loadURL = baseURL;
@@ -75,15 +68,61 @@ public class RatesFragment extends Fragment {
                 catch (IOException ex){
                     xmlcontent = ex.getMessage();
                 }
-
                 return xmlcontent;
         }
         @Override
         protected void onPostExecute(String xmlcontent) {
 
                 xmlcontentText=xmlcontent;
-                xmlRates.setText(xmlcontent);
+//                xmlRates.setText(xmlcontentText);
+            String toTexView = null;
+            String tmp = "";
                 Toast.makeText(getActivity(), "Курсы загружены", Toast.LENGTH_SHORT).show();
+            try {
+                XmlPullParser xpp = prepareXpp(xmlcontentText);
+
+                while (xpp.getEventType() != XmlPullParser.END_DOCUMENT) {
+                    switch (xpp.getEventType()) {
+                        // начало документа
+                        case XmlPullParser.START_DOCUMENT:
+                            toTexView = "START_DOCUMENT";
+                            break;
+                        // начало тэга
+                        case XmlPullParser.START_TAG:
+                            toTexView += "\n START_TAG: name = " + xpp.getName()
+                                    + ", depth = " + xpp.getDepth() + ", attrCount = "
+                                    + xpp.getAttributeCount();
+                            tmp = "";
+                            for (int i = 0; i < xpp.getAttributeCount(); i++) {
+                                tmp = tmp + xpp.getAttributeName(i) + " = "
+                                        + xpp.getAttributeValue(i) + ", ";
+                            }
+                            if (!TextUtils.isEmpty(tmp))
+                                toTexView += "\n Attributes: " + tmp;
+                            break;
+                        // конец тэга
+                        case XmlPullParser.END_TAG:
+                            toTexView += "\n END_TAG: name = " + xpp.getName();
+                            break;
+                        // содержимое тэга
+                        case XmlPullParser.TEXT:
+                            toTexView += "\n text = " + xpp.getText();
+                            break;
+
+                        default:
+                            break;
+                    }
+                    // следующий элемент
+                    xpp.next();
+                }
+                toTexView += "\n END_DOCUMENT";
+
+            } catch (XmlPullParserException e) {
+                toTexView +=  e.getLocalizedMessage().toString();
+            } catch (IOException e) {
+                toTexView += e.getLocalizedMessage().toString();
+            }
+            xmlRates.setText(toTexView);
         }
 
         private String getXMLRates(String path) throws IOException {
@@ -110,5 +149,18 @@ public class RatesFragment extends Fragment {
                     }
                 }
         }
+
+        XmlPullParser prepareXpp(String cxml) throws XmlPullParserException {
+            // получаем фабрику
+            XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+            // включаем поддержку namespace (по умолчанию выключена)
+            factory.setNamespaceAware(true);
+            // создаем парсер
+            XmlPullParser xpp = factory.newPullParser();
+            // даем парсеру на вход Reader
+            xpp.setInput(new StringReader(cxml));
+            return xpp;
+        }
+
     }
 }

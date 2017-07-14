@@ -9,14 +9,11 @@ import android.view.MenuItem;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.text.format.DateUtils;
 import android.widget.DatePicker;
 import java.util.Calendar;
 import android.app.DatePickerDialog;
-//import android.app.Fragment;
-import android.support.v4.app.Fragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         }
         ratesDate=(Button)findViewById(R.id.dateButton);
 
-        setInitialDate();
+        //setInitialDate();
 
     }
 
@@ -47,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
 
         String strDate;
         String strDateD;
-        TextView txtDate;
 
         strDate = DateUtils.formatDateTime(this,
                 dateOnly.getTimeInMillis(),
@@ -61,8 +57,6 @@ public class MainActivity extends AppCompatActivity {
         rfrag = (RatesFragment) getSupportFragmentManager().findFragmentById(R.id.rtFragment);
 
         if (rfrag != null && rfrag.isInLayout()) {
-                    txtDate = (TextView) rfrag.getView().findViewById(R.id.cLabelDate);
-            txtDate.setText(strDateD);
             rfrag.loadXML(strDateD);
         }
         else {
